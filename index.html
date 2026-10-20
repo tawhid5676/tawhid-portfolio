@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tawhid — Founder & Business Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #faf8ff;
+    --bg-card: #ffffff;
+    --text: #0a0a0a;
+    --text-muted: #52525b;
+    --border: #e4e4e7;
+    --accent: #7c3aed;
+    --accent-soft: #ede9fe;
+    --accent-2: #a78bfa;
+  }
+
+  [data-theme="dark"] {
+    --bg: #0a0a0f;
+    --bg-alt: #111118;
+    --bg-card: #15151e;
+    --text: #fafafa;
+    --text-muted: #a1a1aa;
+    --border: #27272f;
+    --accent: #a78bfa;
+    --accent-soft: #2d1f4a;
+    --accent-2: #8b5cf6;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  body.lang-bn {
+    font-family: 'Hind Siliguri', 'Inter', sans-serif;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  [data-theme="dark"] nav {
+    background: rgba(10,10,15,0.9);
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text);
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    color: white;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 18px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .nav-links a {
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--text);
+    background: var(--accent-soft);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .icon-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text);
+    transition: all 0.2s ease;
+  }
+
+  .icon-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .icon-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .lang-btn {
+    padding: 0 12px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    transition: all 0.2s ease;
+  }
+
+  .lang-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .menu-toggle { display: none; }
+
+  /* MAIN */
+  main {
+    padding-top: 70px;
+  }
+
+  section {
+    padding: 100px 24px;
+    position: relative;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+
+  .section-subtitle {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 640px;
+    line-height: 1.7;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #ede9fe 0%, #faf5ff 50%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  [data-theme="dark"] .hero {
+    background: linear-gradient(135deg, #1a1428 0%, #111118 50%, #0a0a0f 100%);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    border: 1px solid var(--accent);
+  }
+
+  .hero-badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+
+  .hero h1 .accent {
+    background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-tagline {
+    font-size: 19px;
+    color: var(--text-muted);
+    margin-bottom: 36px;
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  .btn {
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+    border: 1px solid transparent;
+  }
+
+  .btn-primary {
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+
+  .btn-secondary {
+    background: var(--bg-card);
+    border-color: var(--border);
+    color: var(--text);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-num {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .profile-wrap {
+    position: relative;
+    width: 380px;
+    height: 460px;
+  }
+
+  .profile-frame {
+    position: absolute;
+    inset: 0;
+    border-radius: 32px;
+    background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    padding: 3px;
+    transform: rotate(-2deg);
+    transition: transform 0.4s ease;
+  }
+
+  .profile-wrap:hover .profile-frame {
+    transform: rotate(0deg);
+  }
+
+  .profile-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 29px;
+    overflow: hidden;
+    background: var(--bg-card);
+  }
+
+  .profile-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .profile-tag {
+    position: absolute;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 12px 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .profile-tag .tag-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: grid;
+    place-items: center;
+  }
+
+  .profile-tag .tag-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .tag-1 { top: 40px; left: -30px; animation: float 4s ease-in-out infinite; }
+  .tag-2 { bottom: 60px; right: -40px; animation: float 4s ease-in-out infinite 1s; }
+  .tag-3 { bottom: -20px; left: 20px; animation: float 4s ease-in-out infinite 2s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* ABOUT */
+  .about { background: var(--bg); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-points {
+    display: grid;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .about-point {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition: all 0.25s ease;
+  }
+
+  .about-point:hover {
+    border-color: var(--accent);
+    transform: translateX(4px);
+  }
+
+  .about-point-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: grid;
+    place-items: center;
+  }
+
+  .about-point-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .about-point h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+
+  .about-point p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* BUILDING */
+  .building { background: var(--bg-alt); }
+
+  .project-card {
+    margin-top: 40px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+  }
+
+  .project-card:hover {
+    box-shadow: 0 20px 60px rgba(124,58,237,0.12);
+    transform: translateY(-4px);
+  }
+
+  .project-hero {
+    padding: 48px;
+    background: linear-gradient(135deg, var(--accent-soft), transparent);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    color: var(--text);
+  }
+
+  .project-logo .logo-mark {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    color: white;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .project-card h3 {
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+    color: var(--text);
+  }
+
+  .project-card .project-desc {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 640px;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  .project-body {
+    padding: 32px 48px 48px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .project-feature {
+    padding: 20px;
+    background: var(--bg-alt);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+  }
+
+  .project-feature-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 12px;
+  }
+
+  .project-feature-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .project-feature h5 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+
+  .project-feature p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .project-footer {
+    padding: 24px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .project-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    animation: pulse 2s infinite;
+  }
+
+  /* MEETING */
+  .meeting { background: var(--bg); }
+
+  .meeting-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    margin-top: 40px;
+    align-items: start;
+  }
+
+  .booking-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  }
+
+  .booking-step { margin-bottom: 24px; }
+
+  .step-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .step-num {
+    width: 20px;
+    height: 20px;
+    background: var(--accent);
+    color: white;
+    border-radius: 6px;
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .input, .textarea {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--text);
+    font-family: inherit;
+    transition: all 0.2s ease;
+  }
+
+  .input:focus, .textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+
+  .textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .time-slots {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .time-slot {
+    padding: 10px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    color: var(--text);
+    transition: all 0.2s ease;
+  }
+
+  .time-slot:hover { border-color: var(--accent); }
+
+  .time-slot.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  .type-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .type-option {
+    padding: 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    color: var(--text);
+    transition: all 0.2s ease;
+  }
+
+  .type-option:hover { border-color: var(--accent); }
+
+  .type-option.active {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .confirm-btn {
+    width: 100%;
+    padding: 14px;
+    background: #25D366;
+    color: white;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .confirm-btn:hover {
+    background: #1da851;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(37,211,102,0.3);
+  }
+
+  .confirm-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .confirm-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .booking-note {
+    margin-top: 16px;
+    padding: 12px;
+    background: var(--accent-soft);
+    border-radius: 10px;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .meeting-info {
+    position: sticky;
+    top: 100px;
+  }
+
+  .info-card {
+    padding: 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .info-card h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+  }
+
+  .info-card h4 svg {
+    width: 18px;
+    height: 18px;
+    color: var(--accent);
+  }
+
+  .info-list { display: grid; gap: 12px; }
+
+  .info-item {
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .info-item .check {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 6px;
+    display: grid;
+    place-items: center;
+  }
+
+  .info-item .check svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* CONTACT */
+  .contact { background: var(--bg-alt); padding-bottom: 40px; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    margin-top: 40px;
+  }
+
+  .contact-links { display: grid; gap: 12px; }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    transition: all 0.25s ease;
+    color: var(--text);
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  .contact-link-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+  }
+
+  .contact-link-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .contact-link-text { flex: 1; min-width: 0; }
+
+  .contact-link-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .contact-link-value {
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 2px;
+    word-break: break-all;
+    color: var(--text);
+  }
+
+  .contact-link-arrow {
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+  }
+
+  .contact-link:hover .contact-link-arrow {
+    color: var(--accent);
+    transform: translateX(4px);
+  }
+
+  .social-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.25s ease;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .social-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .social-link svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    background: var(--bg);
+  }
+
+  footer strong { color: var(--text); }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .menu-toggle { display: grid; }
+    .hero-grid, .about-grid, .meeting-layout, .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .profile-wrap { width: 280px; height: 340px; }
+    .hero-visual { order: -1; }
+    .hero { padding-top: 40px; padding-bottom: 40px; }
+    section { padding: 60px 20px; }
+    .project-body { grid-template-columns: 1fr; padding: 24px; }
+    .project-hero, .project-footer { padding: 24px; }
+    .time-slots { grid-template-columns: repeat(3, 1fr); }
+    .type-options { grid-template-columns: 1fr; }
+    .hero-stats { gap: 24px; flex-wrap: wrap; }
+    .tag-1 { left: 0; }
+    .tag-2 { right: 0; }
+    .meeting-info { position: static; }
+    .social-grid { grid-template-columns: 1fr; }
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    transform: translateY(-120%);
+    transition: transform 0.3s ease;
+    z-index: 99;
+  }
+
+  .mobile-menu.open { transform: translateY(0); }
+
+  .mobile-menu a {
+    display: block;
+    padding: 12px 0;
+    font-size: 15px;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  .mobile-menu a:last-child { border-bottom: none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#home" class="brand">
+      <span class="brand-mark">T</span>
+      <span>Tawhid</span>
+    </a>
+    <div class="nav-links">
+      <a href="#home" data-i18n="nav.home">Home</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#building" data-i18n="nav.building">Building</a>
+      <a href="#meeting" data-i18n="nav.meeting">Meeting</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="lang-btn" id="langBtn">EN / বাং</button>
+      <button class="icon-btn" id="themeBtn">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <button class="icon-btn menu-toggle" id="menuBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" data-i18n="nav.home">Home</a>
+  <a href="#about" data-i18n="nav.about">About</a>
+  <a href="#building" data-i18n="nav.building">Building</a>
+  <a href="#meeting" data-i18n="nav.meeting">Meeting</a>
+  <a href="#contact" data-i18n="nav.contact">Contact</a>
+</div>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span data-i18n="hero.badge">Founder & Business Builder</span>
+        </div>
+        <h1>
+          <span data-i18n="hero.greeting">Hi, I'm</span>
+          <span class="accent">Tawhid</span><br>
+          <span data-i18n="hero.title">Building businesses with purpose.</span>
+        </h1>
+        <p class="hero-tagline" data-i18n="hero.tagline">
+          Combining entrepreneurial thinking, technology, and practical execution to build brands and solve real-world problems.
+        </p>
+        <div class="hero-cta">
+          <a href="#meeting" class="btn btn-primary">
+            <span data-i18n="hero.cta1">Book a Meeting</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="https://wa.me/8801722478472" target="_blank" rel="noopener" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span data-i18n="hero.cta2">Let's Talk</span>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num">1+</div>
+            <div class="stat-label" data-i18n="hero.stat1">Active Venture</div>
+          </div>
+          <div>
+            <div class="stat-num"></div>
+            <div class="stat-label" data-i18n="hero.stat2">Ideas in Motion</div>
+          </div>
+          <div>
+            <div class="stat-num">BD</div>
+            <div class="stat-label" data-i18n="hero.stat3">Based in Rangpur</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="profile-wrap">
+          <div class="profile-frame">
+            <div class="profile-inner">
+              <img src="photo.png" alt="Tawhidul Islam Al Kibria" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 500%22><rect fill=%22%23ede9fe%22 width=%22400%22 height=%22500%22/><text x=%22200%22 y=%22290%22 font-size=%22200%22 font-weight=%22800%22 fill=%22%237c3aed%22 text-anchor=%22middle%22 font-family=%22sans-serif%22>T</text></svg>';" />
+            </div>
+          </div>
+          <div class="profile-tag tag-1">
+            <div class="tag-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <div>
+              <div style="font-weight:600;color:var(--text)" data-i18n="hero.tag1.title">Founder</div>
+              <div style="font-size:11px;color:var(--text-muted)">SOHAY BD</div>
+            </div>
+          </div>
+          <div class="profile-tag tag-2">
+            <div class="tag-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            </div>
+            <div>
+              <div style="font-weight:600;color:var(--text)" data-i18n="hero.tag2.title">Business Builder</div>
+              <div style="font-size:11px;color:var(--text-muted)">Rangpur, BD</div>
+            </div>
+          </div>
+          <div class="profile-tag tag-3">
+            <div class="tag-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <div>
+              <div style="font-weight:600;color:var(--text)" data-i18n="hero.tag3.title">Tech & Brands</div>
+              <div style="font-size:11px;color:var(--text-muted)" data-i18n="hero.tag3.sub">Digital Products</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="section-label" data-i18n="about.label">About</div>
+        <h2 class="section-title" data-i18n="about.title">A founder who thinks in systems, brands, and execution.</h2>
+        <p class="section-subtitle" data-i18n="about.desc">
+          I'm Tawhidul Islam Al Kibria — a business-minded founder from Rangpur, Bangladesh. I care about building things that matter: brands with identity, businesses with models, and products that solve real problems.
+        </p>
+      </div>
+      <div class="about-points">
+        <div class="about-point">
+          <div class="about-point-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          </div>
+          <div>
+            <h4 data-i18n="about.p1.title">Business Models</h4>
+            <p data-i18n="about.p1.desc">Thinking through how businesses actually work — revenue, value, and growth.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="about-point-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+          </div>
+          <div>
+            <h4 data-i18n="about.p2.title">Brands & Identity</h4>
+            <p data-i18n="about.p2.desc">Building brands that feel intentional — not just logos, but positioning and voice.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="about-point-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div>
+            <h4 data-i18n="about.p3.title">Technology & Products</h4>
+            <p data-i18n="about.p3.desc">Using tech as a tool to ship digital products that solve real problems.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="about-point-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div>
+            <h4 data-i18n="about.p4.title">Practical Execution</h4>
+            <p data-i18n="about.p4.desc">Ideas are cheap. Shipping, iterating, and learning from the market is what counts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="building" id="building">
+  <div class="container">
+    <div>
+      <div class="section-label" data-i18n="building.label">What I'm Building</div>
+      <h2 class="section-title" data-i18n="building.title">One venture. Built to scale.</h2>
+      <p class="section-subtitle" data-i18n="building.desc">
+        My current focus — a multi-service platform designed to make everyday services easier for people in Bangladesh.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <div class="project-hero">
+        <div class="project-logo">
+          <span class="logo-mark">S</span>
+          <span>SOHAY BD</span>
+        </div>
+        <h3 data-i18n="building.project.title">SOHAY BD</h3>
+        <p class="project-desc" data-i18n="building.project.desc">
+          A multi-service platform that brings everyday services together in one place — making access simpler, faster, and more reliable for users across Bangladesh.
+        </p>
+      </div>
+      <div class="project-body">
+        <div class="project-feature">
+          <div class="project-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h5 data-i18n="building.f1.title">Multi-Service</h5>
+          <p data-i18n="building.f1.desc">Everyday services combined into a single, unified platform experience.</p>
+        </div>
+        <div class="project-feature">
+          <div class="project-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <h5 data-i18n="building.f2.title">User-First</h5>
+          <p data-i18n="building.f2.desc">Designed around real user needs — simple, accessible, and trustworthy.</p>
+        </div>
+        <div class="project-feature">
+          <div class="project-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h5 data-i18n="building.f3.title">Built to Grow</h5>
+          <p data-i18n="building.f3.desc">A flexible foundation ready to scale across categories and regions.</p>
+        </div>
+      </div>
+      <div class="project-footer">
+        <div class="project-status">
+          <span class="status-dot"></span>
+          <span data-i18n="building.status">In active development</span>
+        </div>
+        <a href="#meeting" class="btn btn-secondary" style="padding:10px 18px;font-size:13px">
+          <span data-i18n="building.cta">Discuss this project</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meeting" id="meeting">
+  <div class="container">
+    <div>
+      <div class="section-label" data-i18n="meeting.label">Book a Meeting</div>
+      <h2 class="section-title" data-i18n="meeting.title">Let's have a focused conversation.</h2>
+      <p class="section-subtitle" data-i18n="meeting.desc">
+        Pick a time that works for you. Your request will be sent via WhatsApp for confirmation.
+      </p>
+    </div>
+
+    <div class="meeting-layout">
+      <div class="booking-card">
+        <div class="booking-step">
+          <div class="step-label"><span class="step-num">1</span><span data-i18n="meeting.s1">Select Date</span></div>
+          <input type="date" id="meetingDate" class="input" />
+        </div>
+
+        <div class="booking-step">
+          <div class="step-label"><span class="step-num">2</span><span data-i18n="meeting.s2">Choose Time (Bangladesh Time)</span></div>
+          <div class="time-slots" id="timeSlots">
+            <button class="time-slot" data-time="09:00">9:00 AM</button>
+            <button class="time-slot" data-time="10:30">10:30 AM</button>
+            <button class="time-slot" data-time="12:00">12:00 PM</button>
+            <button class="time-slot" data-time="14:00">2:00 PM</button>
+            <button class="time-slot" data-time="15:30">3:30 PM</button>
+            <button class="time-slot" data-time="17:00">5:00 PM</button>
+            <button class="time-slot" data-time="18:30">6:30 PM</button>
+            <button class="time-slot" data-time="20:00">8:00 PM</button>
+          </div>
+        </div>
+
+        <div class="booking-step">
+          <div class="step-label"><span class="step-num">3</span><span data-i18n="meeting.s3">Meeting Type</span></div>
+          <div class="type-options" id="typeOptions">
+            <button class="type-option" data-type="Business Discussion" data-i18n="meeting.t1">Business Discussion</button>
+            <button class="type-option" data-type="Brand & Partnership" data-i18n="meeting.t2">Brand & Partnership</button>
+            <button class="type-option" data-type="Startup / Collaboration" data-i18n="meeting.t3">Startup / Collaboration</button>
+            <button class="type-option" data-type="Other Inquiry" data-i18n="meeting.t4">Other Inquiry</button>
+          </div>
+        </div>
+
+        <div class="booking-step">
+          <div class="step-label"><span class="step-num">4</span><span data-i18n="meeting.s4">Your Details</span></div>
+          <input type="text" id="visitorName" class="input" placeholder="Your name" data-i18n-ph="meeting.namePh" style="margin-bottom:10px" />
+          <textarea id="visitorMsg" class="textarea" placeholder="Short message (optional)" data-i18n-ph="meeting.msgPh"></textarea>
+        </div>
+
+        <button class="confirm-btn" id="confirmBtn" disabled>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span data-i18n="meeting.confirm">Confirm via WhatsApp</span>
+        </button>
+
+        <div class="booking-note" data-i18n="meeting.note">
+           This is a meeting request. Opening WhatsApp does not confirm the meeting — Tawhid will confirm availability personally.
+        </div>
+      </div>
+
+      <div class="meeting-info">
+        <div class="info-card">
+          <h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span data-i18n="meeting.info1.title">How it works</span>
+          </h4>
+          <div class="info-list">
+            <div class="info-item">
+              <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span data-i18n="meeting.info1.i1">Pick a date and time that suits you.</span>
+            </div>
+            <div class="info-item">
+              <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span data-i18n="meeting.info1.i2">Your request is sent to WhatsApp.</span>
+            </div>
+            <div class="info-item">
+              <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span data-i18n="meeting.info1.i3">Tawhid confirms availability personally.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span data-i18n="meeting.info2.title">Meeting hours</span>
+          </h4>
+          <div class="info-list">
+            <div class="info-item">
+              <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span data-i18n="meeting.info2.i1">Saturday – Thursday</span>
+            </div>
+            <div class="info-item">
+              <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span data-i18n="meeting.info2.i2">9:00 AM – 9:00 PM (Bangladesh Time)</span>
+            </div>
+            <div class="info-item">
+              <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span data-i18n="meeting.info2.i3">30-minute sessions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div>
+      <div class="section-label" data-i18n="contact.label">Contact</div>
+      <h2 class="section-title" data-i18n="contact.title">Let's connect.</h2>
+      <p class="section-subtitle" data-i18n="contact.desc">
+        Reach out through any channel below. I reply to thoughtful messages.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-links">
+        <a href="mailto:tawhid5676@gmail.com" class="contact-link">
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="contact-link-text">
+            <div class="contact-link-label" data-i18n="contact.email">Email</div>
+            <div class="contact-link-value">tawhid5676@gmail.com</div>
+          </div>
+          <div class="contact-link-arrow">→</div>
+        </a>
+        <a href="https://wa.me/8801722478472" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div class="contact-link-text">
+            <div class="contact-link-label" data-i18n="contact.whatsapp">WhatsApp</div>
+            <div class="contact-link-value">+880 1722 478472</div>
+          </div>
+          <div class="contact-link-arrow">→</div>
+        </a>
+        <a href="tel:+8801722478472" class="contact-link">
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div class="contact-link-text">
+            <div class="contact-link-label" data-i18n="contact.phone">Phone</div>
+            <div class="contact-link-value">+880 1722 478472</div>
+          </div>
+          <div class="contact-link-arrow">→</div>
+        </a>
+        <div class="contact-link" style="cursor:default">
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-link-text">
+            <div class="contact-link-label" data-i18n="contact.location">Location</div>
+            <div class="contact-link-value" data-i18n="contact.locValue">Rangpur, Bangladesh</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="font-size:14px;font-weight:600;margin-bottom:16px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em" data-i18n="contact.social">Find me online</h4>
+        <div class="social-grid">
+          <a href="https://www.facebook.com/share/1SmLChYfMd/" target="_blank" rel="noopener" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href="https://www.instagram.com/tawhid224784" target="_blank" rel="noopener" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            Instagram
+          </a>
+          <a href="https://www.linkedin.com/in/tawhidul-islam-al-kibria-a71ba0364" target="_blank" rel="noopener" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.935v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://x.com/tawhid9889" target="_blank" rel="noopener" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            X (Twitter)
+          </a>
+          <a href="https://github.com/tawhid5676" target="_blank" rel="noopener" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 <strong>Tawhid</strong> · <span data-i18n="footer.tagline">Built with purpose.</span></p>
+  </div>
+</footer>
+
+<script>
+const translations = {
+  en: {
+    'nav.home':'Home','nav.about':'About','nav.building':'Building','nav.meeting':'Meeting','nav.contact':'Contact',
+    'hero.badge':'Founder & Business Builder',
+    'hero.greeting':"Hi, I'm",
+    'hero.title':'Building businesses with purpose.',
+    'hero.tagline':'Combining entrepreneurial thinking, technology, and practical execution to build brands and solve real-world problems.',
+    'hero.cta1':'Book a Meeting','hero.cta2':"Let's Talk",
+    'hero.stat1':'Active Venture','hero.stat2':'Ideas in Motion','hero.stat3':'Based in Rangpur',
+    'hero.tag1.title':'Founder','hero.tag2.title':'Business Builder','hero.tag3.title':'Tech & Brands','hero.tag3.sub':'Digital Products',
+    'about.label':'About',
+    'about.title':'A founder who thinks in systems, brands, and execution.',
+    'about.desc':"I'm Tawhidul Islam Al Kibria — a business-minded founder from Rangpur, Bangladesh. I care about building things that matter: brands with identity, businesses with models, and products that solve real problems.",
+    'about.p1.title':'Business Models','about.p1.desc':'Thinking through how businesses actually work — revenue, value, and growth.',
+    'about.p2.title':'Brands & Identity','about.p2.desc':'Building brands that feel intentional — not just logos, but positioning and voice.',
+    'about.p3.title':'Technology & Products','about.p3.desc':'Using tech as a tool to ship digital products that solve real problems.',
+    'about.p4.title':'Practical Execution','about.p4.desc':'Ideas are cheap. Shipping, iterating, and learning from the market is what counts.',
+    'building.label':"What I'm Building",
+    'building.title':'One venture. Built to scale.',
+    'building.desc':'My current focus — a multi-service platform designed to make everyday services easier for people in Bangladesh.',
+    'building.project.title':'SOHAY BD',
+    'building.project.desc':'A multi-service platform that brings everyday services together in one place — making access simpler, faster, and more reliable for users across Bangladesh.',
+    'building.f1.title':'Multi-Service','building.f1.desc':'Everyday services combined into a single, unified platform experience.',
+    'building.f2.title':'User-First','building.f2.desc':'Designed around real user needs — simple, accessible, and trustworthy.',
+    'building.f3.title':'Built to Grow','building.f3.desc':'A flexible foundation ready to scale across categories and regions.',
+    'building.status':'In active development','building.cta':'Discuss this project',
+    'meeting.label':'Book a Meeting',
+    'meeting.title':"Let's have a focused conversation.",
+    'meeting.desc':'Pick a time that works for you. Your request will be sent via WhatsApp for confirmation.',
+    'meeting.s1':'Select Date','meeting.s2':'Choose Time (Bangladesh Time)','meeting.s3':'Meeting Type','meeting.s4':'Your Details',
+    'meeting.t1':'Business Discussion','meeting.t2':'Brand & Partnership','meeting.t3':'Startup / Collaboration','meeting.t4':'Other Inquiry',
+    'meeting.namePh':'Your name','meeting.msgPh':'Short message (optional)',
+    'meeting.confirm':'Confirm via WhatsApp',
+    'meeting.note':'⏳ This is a meeting request. Opening WhatsApp does not confirm the meeting — Tawhid will confirm availability personally.',
+    'meeting.info1.title':'How it works',
+    'meeting.info1.i1':'Pick a date and time that suits you.',
+    'meeting.info1.i2':'Your request is sent to WhatsApp.',
+    'meeting.info1.i3':'Tawhid confirms availability personally.',
+    'meeting.info2.title':'Meeting hours',
+    'meeting.info2.i1':'Saturday – Thursday',
+    'meeting.info2.i2':'9:00 AM – 9:00 PM (Bangladesh Time)',
+    'meeting.info2.i3':'30-minute sessions',
+    'contact.label':'Contact','contact.title':"Let's connect.",
+    'contact.desc':'Reach out through any channel below. I reply to thoughtful messages.',
+    'contact.email':'Email','contact.whatsapp':'WhatsApp','contact.phone':'Phone','contact.location':'Location',
+    'contact.locValue':'Rangpur, Bangladesh','contact.social':'Find me online',
+    'footer.tagline':'Built with purpose.'
+  },
+  bn: {
+    'nav.home':'হোম','nav.about':'পরিচিতি','nav.building':'প্রজেক্ট','nav.meeting':'মিটিং','nav.contact':'যোগাযোগ',
+    'hero.badge':'প্রতিষ্ঠাতা ও বিজনেস বিল্ডার',
+    'hero.greeting':'আমি',
+    'hero.title':'উদ্দেশ্য নিয়ে ব্যবসা গড়ছি।',
+    'hero.tagline':'উদ্যোক্তা চিন্তা, প্রযুক্তি এবং বাস্তব কাজের সমন্বয়ে ব্র্যান্ড তৈরি এবং বাস্তব সমস্যা সমাধান করছি।',
+    'hero.cta1':'মিটিং বুক করুন','hero.cta2':'কথা বলি',
+    'hero.stat1':'সক্রিয় প্রজেক্ট','hero.stat2':'চলমান আইডিয়া','hero.stat3':'রংপুর ভিত্তিক',
+    'hero.tag1.title':'প্রতিষ্ঠাতা','hero.tag2.title':'বিজনেস বিল্ডার','hero.tag3.title':'টেক ও ব্র্যান্ড','hero.tag3.sub':'ডিজিটাল প্রোডাক্ট',
+    'about.label':'পরিচিতি',
+    'about.title':'সিস্টেম, ব্র্যান্ড এবং বাস্তবায়ন নিয়ে ভাবেন এমন একজন প্রতিষ্ঠাতা।',
+    'about.desc':'আমি তাওহীদুল ইসলাম আল কিবরিয়া — রংপুরের একজন ব্যবসায়িক চিন্তার প্রতিষ্ঠাতা। আমি এমন কিছু তৈরি করতে চাই যার মূল্য আছে: পরিচিতিসম্পন্ন ব্র্যান্ড, মডেলসমৃদ্ধ ব্যবসা এবং বাস্তব সমস্যার সমাধান।',
+    'about.p1.title':'ব্যবসায়িক মডেল','about.p1.desc':'ব্যবসা কীভাবে কাজ করে — রেভিনিউ, ভ্যালু এবং গ্রোথ নিয়ে চিন্তা।',
+    'about.p2.title':'ব্র্যান্ড ও পরিচিতি','about.p2.desc':'ইচ্ছাকৃত ব্র্যান্ড তৈরি — শুধু লোগো নয়, পজিশনিং ও ভয়েস।',
+    'about.p3.title':'প্রযুক্তি ও প্রোডাক্ট','about.p3.desc':'বাস্তব সমস্যার সমাধানকারী ডিজিটাল প্রোডাক্ট তৈরিতে প্রযুক্তির ব্যবহার।',
+    'about.p4.title':'বাস্তব বাস্তবায়ন','about.p4.desc':'আইডিয়া সস্তা। শিপ করা, ইটারেট করা, মার্কেট থেকে শেখা — এটাই আসল।',
+    'building.label':'যা গড়ছি',
+    'building.title':'একটি ভেঞ্চার। স্কেলের জন্য তৈরি।',
+    'building.desc':'বর্তমান ফোকাস — বাংলাদেশের মানুষের জন্য দৈনন্দিন সেবা সহজ করার একটি মাল্টি-সার্ভিস প্ল্যাটফর্ম।',
+    'building.project.title':'SOHAY BD',
+    'building.project.desc':'একটি মাল্টি-সার্ভিস প্ল্যাটফর্ম যা দৈনন্দিন সেবাগুলোকে এক জায়গায় নিয়ে আসে — বাংলাদেশের ব্যবহারকারীদের জন্য অ্যাক্সেস সহজ, দ্রুত ও নির্ভরযোগ্য করে।',
+    'building.f1.title':'মাল্টি-সার্ভিস','building.f1.desc':'দৈনন্দিন সেবাগুলো একটি ইউনিফাইড প্ল্যাটফর্মে।',
+    'building.f2.title':'ইউজার-ফার্স্ট','building.f2.desc':'বাস্তব ব্যবহারকারীর চাহিদা ঘিরে ডিজাইন — সহজ, সহজলভ্য ও বিশ্বস্ত।',
+    'building.f3.title':'গ্রোথের জন্য তৈরি','building.f3.desc':'ক্যাটাগরি ও অঞ্চল জুড়ে স্কেল করার জন্য নমনীয় ভিত্তি।',
+    'building.status':'সক্রিয়ভাবে ডেভেলপমেন্টে','building.cta':'প্রজেক্ট নিয়ে আলোচনা',
+    'meeting.label':'মিটিং বুক করুন',
+    'meeting.title':'একটি ফোকাসড কথোপকথন হোক।',
+    'meeting.desc':'আপনার সুবিধামতো সময় বেছে নিন। আপনার অনুরোধ WhatsApp-এ পাঠানো হবে।',
+    'meeting.s1':'তারিখ নির্বাচন','meeting.s2':'সময় বেছে নিন (বাংলাদেশ টাইম)','meeting.s3':'মিটিংয়ের ধরন','meeting.s4':'আপনার তথ্য',
+    'meeting.t1':'ব্যবসা আলোচনা','meeting.t2':'ব্র্যান্ড ও পার্টনারশিপ','meeting.t3':'স্টার্টআপ / সহযোগিতা','meeting.t4':'অন্য জিজ্ঞাসা',
+    'meeting.namePh':'আপনার নাম','meeting.msgPh':'সংক্ষিপ্ত বার্তা (ঐচ্ছিক)',
+    'meeting.confirm':'WhatsApp-এ নিশ্চিত করুন',
+    'meeting.note':'⏳ এটি একটি মিটিং অনুরোধ। WhatsApp খোলা মানে মিটিং নিশ্চিত হওয়া নয় — তাওহীদ ব্যক্তিগতভাবে অ্যাভেইলেবিলিটি নিশ্চিত করবেন।',
+    'meeting.info1.title':'কীভাবে কাজ করে',
+    'meeting.info1.i1':'আপনার সুবিধামতো তারিখ ও সময় বেছে নিন।',
+    'meeting.info1.i2':'আপনার অনুরোধ WhatsApp-এ পাঠানো হবে।',
+    'meeting.info1.i3':'তাওহীদ ব্যক্তিগতভাবে অ্যাভেইলেবিলিটি নিশ্চিত করবেন।',
+    'meeting.info2.title':'মিটিংয়ের সময়',
+    'meeting.info2.i1':'শনিবার – বৃহস্পতিবার',
+    'meeting.info2.i2':'সকাল ৯টা – রাত ৯টা (বাংলাদেশ টাইম)',
+    'meeting.info2.i3':'০ মিনিটের সেশন',
+    'contact.label':'যোগাযোগ','contact.title':'যোগাযোগ করি।',
+    'contact.desc':'নিচের যেকোনো চ্যানেলে যোগাযোগ করুন। অর্থপূর্ণ বার্তার উত্তর দিই।',
+    'contact.email':'ইমেইল','contact.whatsapp':'হোয়াটসঅ্যাপ','contact.phone':'ফোন','contact.location':'অবস্থান',
+    'contact.locValue':'রংপুর, বাংলাদেশ','contact.social':'অনলাইনে খুঁজুন',
+    'footer.tagline':'উদ্দেশ্য নিয়ে তৈরি।'
+  }
+};
+
+let currentLang = localStorage.getItem('lang') || 'en';
+let currentTheme = localStorage.getItem('theme') || 'light';
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+  document.body.classList.toggle('lang-bn', lang === 'bn');
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) el.textContent = translations[lang][key];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (translations[lang] && translations[lang][key]) el.setAttribute('placeholder', translations[lang][key]);
+  });
+}
+
+function applyTheme(theme) {
+  currentTheme = theme;
+  localStorage.setItem('theme', theme);
+  document.documentElement.setAttribute('data-theme', theme);
+  const icon = document.getElementById('themeIcon');
+  if (theme === 'dark') {
+    icon.innerHTML = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>';
+  } else {
+    icon.innerHTML = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>';
+  }
+}
+
+document.getElementById('langBtn').addEventListener('click', () => {
+  applyLang(currentLang === 'en' ? 'bn' : 'en');
+});
+document.getElementById('themeBtn').addEventListener('click', () => {
+  applyTheme(currentTheme === 'light' ? 'dark' : 'light');
+});
+
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+const state = { date: '', time: '', type: '', name: '', msg: '' };
+
+const dateInput = document.getElementById('meetingDate');
+const todayBD = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' }));
+const todayStr = todayBD.toISOString().split('T')[0];
+dateInput.min = todayStr;
+dateInput.value = todayStr;
+state.date = todayStr;
+
+dateInput.addEventListener('change', e => {
+  state.date = e.target.value;
+  checkConfirm();
+});
+
+document.querySelectorAll('.time-slot').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.time-slot').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    state.time = btn.dataset.time;
+    checkConfirm();
+  });
+});
+
+document.querySelectorAll('.type-option').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.type-option').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    state.type = btn.dataset.type;
+    checkConfirm();
+  });
+});
+
+document.getElementById('visitorName').addEventListener('input', e => { state.name = e.target.value; checkConfirm(); });
+document.getElementById('visitorMsg').addEventListener('input', e => { state.msg = e.target.value; });
+
+function checkConfirm() {
+  const btn = document.getElementById('confirmBtn');
+  btn.disabled = !(state.date && state.time && state.type);
+}
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00');
+  return d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function formatTime(t) {
+  const [h, m] = t.split(':').map(Number);
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  const hh = h % 12 || 12;
+  return `${hh}:${m.toString().padStart(2,'0')} ${ampm}`;
+}
+
+document.getElementById('confirmBtn').addEventListener('click', () => {
+  const displayName = state.name.trim() || 'Guest';
+  const lines = [
+    `*Meeting Request*`,
+    ``,
+    `👤 *Name:* ${displayName}`,
+    `📅 *Date:* ${formatDate(state.date)}`,
+    `🕐 *Time:* ${formatTime(state.time)} (Bangladesh Time)`,
+    `📋 *Type:* ${state.type}`,
+  ];
+  if (state.msg.trim()) {
+    lines.push('');
+    lines.push(`💬 *Message:*`);
+    lines.push(state.msg.trim());
+  }
+  lines.push('');
+  lines.push('_Awaiting your confirmation._');
+
+  const text = lines.join('\n');
+  const url = `https://wa.me/8801722478472?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank');
+});
+
+applyTheme(currentTheme);
+applyLang(currentLang);
+</script>
+</body>
+</html>
